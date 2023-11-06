@@ -7,15 +7,8 @@ Since Spring Boot 3.1, you can now use SSL bundles and *pem* files to secure you
 ## Set-up
 * Get an SSL certificate from a trusted certificate authority (CA) like [Let's Encrypt](https://letsencrypt.org/)\
   (Let's Encrypt is free ;^P )
-
-  * In the case of Let's Encrypt, I used their [certbot](https://certbot.eff.org/) tool to generate my SSL certificate.
-  * In Windows, it puts all the certificate files into a folder named for your domain name in `C:\Certbot\live\`.
-  * In a production environment, I would probably put those pem files in a vault of some sort, but Let's Encrypt manages auto-renewal of the certificates, so in order to not worry about that, I left them where they are.
-  * I then used PowerShell to create a symbolic link to the `pem` files in the `src/main/resources/certs` folder.
-
-
-    PS I:\git\ssl-bundle-demo\src\main\resources\certs> New-Item -ItemType SymbolicLink -Path "fullchain.pem" -Target "C:\Certbot\live\www.my-domain.whatever\fullchain.pem"
-
+* Put the certificate files in a folder in your project.\
+  __*Note:*__ I put mine in a folder called `certs` in the `resources` folder.
 * Add the following to your application.properties/yml file
 
 
